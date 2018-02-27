@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Cadastro de Profissionais</h3>
+      <br/>
+      <form #f="ngForm" (submit)="form_submit(f)">
+        <input type="hidden" id="$key" [(ngModel)]="f.$key" name="$key">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" placeholder="Nome" [(ngModel)]="f.nome" name="nome">
+        </div>
+        <div class="form-group">
+          <label for="sobre">Sobre</label>
+          <textarea class="form-control" id="sobre" placeholder="Sobre o profissional" [(ngModel)]="f.sobre" name="sobre"></textarea>
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="file">Imagem do Profissional</label>
+            <input class="form-control" required accept=".jpg, .png, .gif" id="file" [(ngModel)]="f.file" name="file" type="file" />
+          </div>
+          <br/>
+        <button class="btn btn-success" type="submit">Salvar</button>
+      </form>
+      <br/>
+      <hr>
+    </div>
+    <div class="col-md-6">
+      <h3>Lista de Profissionais</h3>
+      <br/>
+      <div class="card" style="margin-bottom: 15px;" *ngFor="let p of profissionais | async">
+        <div class="card-block row">
+          <div class="col-md-9">
+            <h5 class="card-title">{{p.nome}}</h5>
+            <p>{{p.sobre}}</p>
+          </div>
+          <div class="col-md-3 frame" style="border: 1px solid #BBB; height: 130px;">
+            <img src="{{p.file}}">
+          </div>
+          <button class="btn btn-warning right-side" (click)="editProf($event, this.p, f)">Editar</button>
+          <button class="btn btn-danger right-side" (click)="deleteProf(this.p.$key)">Excluir</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

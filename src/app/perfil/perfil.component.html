@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Perfil da Empresa</h3>
+        <br/>
+        <form #p="ngForm" (submit)="form_submit(p)">
+          <div class="form-group">
+            <label for="nome">Nome da Empresa</label>
+            <input type="text" class="form-control" id="nome" placeholder="Nome da Empresa" ngModel name="nome">
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select type="text" class="form-control" id="categoria" ngModel name="categoria">
+              <option value="">Selecione a Categoria</option>
+              <option value="Salão de beleza">Salão de beleza</option>
+              <option value="Clínica de estética">Clínica de estética</option>
+              <option value="Barbearia">Barbearia</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" id="endereco" placeholder="Endereço completo" ngModel name="endereco">
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group">
+              <label for="latitude">Latitude</label>
+              <input type="text" class="form-control" id="latitude" placeholder="Latitude" ngModel name="latitude">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="form-group">
+              <label for="longitude">Longitude</label>
+              <input type="text" class="form-control" id="longitude" placeholder="Longitude" ngModel name="longitude">
+            </div>
+          </div> 
+          <div class="form-group">
+            <label>Selecione o Logo</label> 
+            <input class="form-control" required accept=".jpg, .png, .gif" id="file" name="file" type="file" />
+          </div> 
+          <div class="form-group">
+            <label for="descricao">Sobre a Empresa</label>
+            <textarea class="form-control" id="descricao" placeholder="Fale sobre sua empresa" ngModel name="descricao"></textarea>
+          </div>
+          <button class="btn btn-success" type="submit">Cadastrar</button>
+        </form>
+      </div>      
+      <div class="col-md-6">
+          <h3>Dados da Empresa</h3>
+          <br/>
+          <div class="card" style="margin-bottom: 15px;" *ngFor="let p of perfil | async">
+            <div class="card-block">
+              <div class="row">
+                <div class="col-md-9">
+                  <h5 class="card-title">{{p.nome}}</h5>
+                  <p>Categoria: {{p.categoria}}</p>
+                  <p>Endereço: {{p.endereco}}</p>
+                  <p>Latitude: {{p.latitude}}</p>
+                  <p>Longitude: {{p.longitude}}</p>
+                  <p>Sobre: {{p.descricao}}</p>
+                </div>
+                <div class="col-md-1">
+                  <img class="logo" src= '{{ p.file }}'/>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <!-- <button class="btn btn-warning right-side" (click)="updatePerfil()">Editar</button> -->
+                <button class="btn btn-danger right-side" (click)="deletePerfil()">Excluir</button>
+              </div> 
+            </div>
+          </div>
+      </div>
+    </div>  
+</div>
+

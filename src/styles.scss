@@ -1,0 +1,24 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import 'variables';
+@import 'bootswatch';
+@import "../node_modules/fullcalendar/dist/fullcalendar.min.css";
+
+body{
+    padding-top: 70px;
+}
+
+.bg-dark{
+    background-color: #000000;
+}
+
+.card-outline-dark{
+    border: 1px #000 solid;
+}
+
+$btn-stylish-color:              $white !default;
+$btn-stylish-bg:                 #E91E63;
+$btn-stylish-border:             $btn-danger-bg;
+
+.btn-stylish{
+    @include button-variant($btn-stylish-color, $btn-stylish-bg, $btn-stylish-border);
+}
