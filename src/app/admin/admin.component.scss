@@ -1,0 +1,11 @@
+.card-body { padding:0px; }
+.card-footer .pagination { margin: 0; }
+.list-group-item { float: right; margin-right: 2px; }
+.list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
+.list-group { margin-bottom:0px; }
+.blocked{
+    .card-body label { 
+    text-decoration: line-through;
+    color: rgb(128, 144, 160);
+    } 
+}

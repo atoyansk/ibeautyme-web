@@ -1,20 +1,20 @@
+<div class="accountbg"></div>
 <div class="container">
     <div class="row justify-content-md-center align-items-center">
       <div class="col-md-5">
-        <div class="card card-outline-dark text-xs-center">
-          <h3 class="card-header bg-dark text-white">Sign In</h3>
+        <div class="card card-ex text-xs-center">
           <div class="card-block">
+            <div class="logo"></div>
+            <div class="title-login">Sign In</div>
             <form #f="ngForm" (submit)="form_login(f)">
               <fieldset>
                 <div class="form-group">
-                  <label for="email">Email</label>
                   <input class="form-control" ngModel type="text" placeholder="Email" name="email" maxlength="60" required>
                 </div>
                 <div class="form-group">
-                  <label for="password">Senha</label>
-                  <input class="form-control" name="password" ngModel type="password" placeholder="Senha" required minlength="6" maxlength="30">
+                  <input class="form-control" name="password" ngModel type="password" placeholder="Password" required minlength="6" maxlength="30">
                 </div>
-                <button type="submit" class="btn btn-stylish">Sign In</button>
+                <button type="submit" class="btn btn-stylish btn-block">Sign In</button>
               </fieldset>
             </form>
           </div>

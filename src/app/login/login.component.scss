@@ -1,0 +1,15 @@
+.topbar-main{
+    position:fixed;
+    right:0;
+    left:0;
+    top:0;
+    background-color:#fff;
+    box-shadow: 1px 0 20px rgba(0,0,0,.05);
+}
+.logo{
+    height: 150px;
+    background: url("../../imgs/logo.png");
+    background-repeat: no-repeat;
+    background-size: 120px 120px;
+    background-position: center;
+}

@@ -9,6 +9,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ProfissionaisComponent } from './profissionais/profissionais.component';
 import { AgendaComponent } from './agenda/agenda.component';
 import { SignUpFormComponent } from './login/sign-up-form/sign-up-form.component';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const AppRoutes: Routes = [
 
@@ -19,6 +21,8 @@ const AppRoutes: Routes = [
             {path: 'perfil', component: PerfilComponent},
             {path: 'servicos', component: CadastroServicoComponent},
             {path: 'profissionais', component: ProfissionaisComponent},
+            {path: 'admin', component: AdminComponent},
+            {path: 'dashboard', component: DashboardComponent},
             { path: 'signup', component: SignUpFormComponent }
         ]}
     ]}

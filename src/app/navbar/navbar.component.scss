@@ -1,11 +1,43 @@
-.navbar-header {
-    display: block;
-    text-align: center;
-    float: none;
-    color: white;
-    margin-left: 120px;
-  }
-
-  .logo {
+.logo {
     max-height: 40px;
+    margin: 5px 10px 0 30px;
+}
+
+.navbar {
+  padding: 0 2rem;
+}
+.btn{
+  margin-top: 12px;
+}
+
+#topnav{position:fixed;right:0;left:0;top:0;z-index:1030;background-color:transparent;border:0;-webkit-transition:all .5s ease;transition:all .5s ease;min-height:62px}
+#topnav .dropdown.show .nav-link{background-color:rgba(255,255,255,.2)}
+#topnav .language-switch a img{float:right;margin-top:5px}
+#topnav .nav-link{ text-align: center;margin-left: -20px;padding: 20px;}
+#topnav .nav-link:active, #topnav .nav-link:focus {
+  color:#fff;
+  background-color:rgba(255, 255, 255, 0.1)!important;
+  padding: 20px;
+}
+#topnav .nav-link:active .submenu li.active>a{color:#0f9cf3}
+#topnav .topbar-main{background-color:#424858}
+#topnav .topbar-main .logo{color:#fff!important;font-size:24px;font-weight:700;letter-spacing:1px;line-height:60px;text-transform:uppercase;float:left}
+#topnav .topbar-main .logo-small{display:none}
+#topnav .topbar-main .badge-topbar{position:absolute;top:7px;right:7px;z-index:99}
+// #topnav .topbar-main .nav>li>a{height:36px;width:36px;padding:0;font-size:24px;line-height:35px;text-align:center;border-radius:50%;margin:12px 8px;color:rgba(10,24,50,.7)}
+// #topnav .topbar-main .nav>li>a:focus,#topnav .topbar-main .nav>li>a:hover{background-color:rgba(10,24,50,.1);color:#0a1832}
+// #topnav .topbar-main .navbar-nav>.open>a{background-color:rgba(10,24,50,.1)!important}
+#topnav .topbar-main .profile img{height:34px;width:34px;display:block}
+#topnav .topbar-main .navbar-nav{margin:0}
+#topnav .navbar-name {
+  text-align: center;
+  float: right;
+  color: white;
+  margin-top: 15px;
+  margin-right: 50%;
+}
+#topnav .navbar-header {
+  text-align: center;
+  float: right;
+  color: white;
 }

@@ -1,30 +1,26 @@
 <div class="container">
     <div class="row justify-content-md-center align-items-center">
       <div class="col-md-5">
-        <div class="card card-outline-dark text-xs-center">
-          <h3 class="card-header bg-dark text-white">Cadastro de usuário</h3>
+        <div class="card card-ex text-xs-center">
           <div class="card-block">
+            <div class="title-login">Create New Account</div>
             <form #f="ngForm" (submit)="form_cadastro(f)">
               <fieldset>
                 <div class="form-group">
-                  <label for="email">Email</label>
                   <input class="form-control"  type="email" required ngModel email name="email" placeholder="Email">
                 </div>
                 <div class="form-group">
-                  <label for="email">Confirme o Email</label>
-                  <input class="form-control" type="email" required ngModel email name="emailconfirmacao" placeholder="Confirme o email">
-                  <small class="text-danger" *ngIf="!verificaSeEmailsSaoIguais(f)">Emails não conferem</small>
+                  <input class="form-control" type="email" required ngModel email name="emailconfirmacao" placeholder="Confirm Email">
+                  <small class="text-danger" *ngIf="!verificaSeEmailsSaoIguais(f)">Emails don't match</small>
                 </div>
                 <div class="form-group">
-                  <label for="password">Senha</label>
-                  <input class="form-control" type="password" required ngModel name="senha" placeholder="Senha">
+                  <input class="form-control" type="password" required ngModel name="senha" placeholder="Password">
                 </div>
                 <div class="form-group">
-                  <label for="password">Confirme a Senha</label>
-                  <input class="form-control" type="password" required ngModel name="senhaconfirmacao" placeholder="Confirme a senha"><br />
-                  <small class="text-danger" *ngIf="!verificaSeSenhasSaoIguais(f)">Senhas não conferem</small>
+                  <input class="form-control" type="password" required ngModel name="senhaconfirmacao" placeholder="Confirm Password"><br />
+                  <small class="text-danger" *ngIf="!verificaSeSenhasSaoIguais(f)">Passwords don't match</small>
                 </div>
-                <button type="submit" [disabled]="!verificaSeFormEValido(f)" class="btn btn-stylish">Cadastrar</button>
+                <button type="submit" [disabled]="!verificaSeFormEValido(f)" class="btn btn-stylish btn-block">Create Account</button>
               </fieldset>
             </form>
           </div>

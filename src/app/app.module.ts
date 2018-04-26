@@ -18,7 +18,10 @@ import { PerfilModule} from './perfil/perfil.module';
 import { CadastroServicoModule } from './cadastro-servico/cadastro-servico.module';
 import { ProfissionaisModule} from './profissionais/profissionais.module';
 import { LoginModule } from './login/login.module';
+import { AdminModule } from './admin/admin.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app.routing.module';
+import { EmpresaService } from './shared/empresa-service';
 
 
 @NgModule({
@@ -38,9 +41,11 @@ import { AppRoutingModule } from './app.routing.module';
     AngularFireModule.initializeApp(FirebaseConfig),
     AngularFireDatabaseModule,
     AppRoutingModule,
-    LoginModule
+    LoginModule,
+    AdminModule,
+    DashboardModule
   ],
-  providers: [AngularFireDatabase],
+  providers: [AngularFireDatabase, EmpresaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
