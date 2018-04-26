@@ -1,22 +1,25 @@
 <div class="container col-md-10 col-sm-12 card card-ex">
         <div class="col-sm-12 row">
-            <div class="col-sm-2"> <!-- required for floating -->
-                <!-- Nav tabs -->
-                <ul class="nav navbar-nav tabs-left" role="tablist">
-                  <li class="active"><a href="#home" data-toggle="tab">Home do Leonardo Braga</a></li>
-                  <li><a href="#profile" data-toggle="tab">Profile</a></li>
-                  <li><a href="#messages" data-toggle="tab">Messages</a></li>
-                  <li><a href="#settings" data-toggle="tab">Settings</a></li>
-                </ul>
-              </div>
-              <div class="col-sm-10">
-                <!-- Tab panes -->
-                <div class="tab-content">
-                  <div class="tab-pane active" id="home"><angular2-fullcalendar [options]="calendarOptions" (initialized)="onCalendarInit($event)"></angular2-fullcalendar></div>
-                  <div class="tab-pane fade" id="profile"><angular2-fullcalendar [options]="calendarOptions" (initialized)="onCalendarInit($event)"></angular2-fullcalendar></div>
-                  <div class="tab-pane fade" id="messages"><angular2-fullcalendar [options]="calendarOptions" (initialized)="onCalendarInit($event)"></angular2-fullcalendar></div>
-                  <div class="tab-pane fade" id="settings"><angular2-fullcalendar [options]="calendarOptions" (initialized)="onCalendarInit($event)"></angular2-fullcalendar></div>
+            <div class="col-sm-3">
+                <div class="card">
+                  <div class="card-header text-white text-center bg-primary mb-3">
+                      <h5>Profissionais</h5>    
+                  </div>
+                    <div class="card-body">
+                      <ul class="list-group">
+                        <li *ngFor="let p of profissionais | async"
+                            [class.selected]="p === selectedP"
+                            (click)="onSelect(p)">
+                            {{p.nome}}
+                          </li>
+                      </ul>
+                    </div>
                 </div>
-              </div>
+            </div>
+            <div class="col-sm-9">
+                <div *ngIf="selectedP">
+                  <div><angular2-fullcalendar [options]="calendarOptions" (initialized)="onCalendarInit($event)"></angular2-fullcalendar></div>
+                </div>
+            </div>
         </div>
     </div>

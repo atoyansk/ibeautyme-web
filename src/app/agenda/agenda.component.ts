@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { Profissional } from '../profissionais/profissional';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-agenda',
@@ -8,8 +13,23 @@ import { Component, OnInit } from '@angular/core';
 export class AgendaComponent implements OnInit {
 
   initialLocaleCode = 'pt-br';
+
+  userId: string;
+  $key: string;
+  value: any;
+  profissionais: FirebaseListObservable<Profissional[]>;
+  profissional: FirebaseObjectObservable<Profissional>;
+  perfil: FirebaseListObservable<any[]>;
+
+  selectedP: Profissional;
   
-  constructor() { }
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) { 
+  
+    this.afAuth.authState.subscribe(user => {
+      if(user) this.userId = user.uid
+      this.profissionais = this.db.list(`profissionais/${this.userId}`);
+    })
+  }
 
   ngOnInit() {
     
@@ -99,5 +119,10 @@ export class AgendaComponent implements OnInit {
 
   onCalendarInit(initialized: boolean) {
     console.log('Calendar initialized');
+  }
+
+  onSelect(p: Profissional): void {
+    this.selectedP = p;
+    console.log(p);
   }
 }
