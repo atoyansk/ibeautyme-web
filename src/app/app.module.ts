@@ -11,6 +11,7 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/dat
 
 import { CalendarModule } from "ap-angular2-fullcalendar";
 import {CalendarComponent} from "ap-angular2-fullcalendar";
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { NavbarModule } from './navbar/navbar.module';
 import { AgendaModule} from './agenda/agenda.module';
@@ -43,7 +44,8 @@ import { EmpresaService } from './shared/empresa-service';
     AppRoutingModule,
     LoginModule,
     AdminModule,
-    DashboardModule
+    DashboardModule,
+    ChartsModule
   ],
   providers: [AngularFireDatabase, EmpresaService],
   bootstrap: [AppComponent]

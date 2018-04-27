@@ -10,7 +10,7 @@
                         <li *ngFor="let p of profissionais | async"
                             [class.selected]="p === selectedP"
                             (click)="onSelect(p)">
-                            {{p.nome}}
+                            <div><img src="{{p.file}}" class="rounded-circle line-content" width="32" height="32">{{p.nome}}</div>
                           </li>
                       </ul>
                     </div>
