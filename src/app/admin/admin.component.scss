@@ -4,8 +4,50 @@
 .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
 .list-group { margin-bottom:0px; }
 .blocked{
-    .card-body label { 
     text-decoration: line-through;
     color: rgb(128, 144, 160);
-    } 
 }
+.selected {
+    background-color: rgb(99, 153, 107) !important;
+    border-color: rgb(56, 128, 56);
+    color: white;
+  }
+  .idKey{
+    color: rgb(128, 144, 160);
+    float: right;
+    margin-right: 5px;
+    border: .5px solid #EEE;
+    padding: 2px; 
+  }
+  .linediv{
+      margin: 15px;
+      border-bottom: solid 1px #EEE;
+  }
+
+  //Chart
+    .mini-stat{box-shadow:1px 0 20px rgba(0,0,0,.05);padding:20px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;margin-bottom:30px}
+    .mini-stat-icon{width:60px;height:60px;display:inline-block;line-height:60px;text-align:center;font-size:30px;-webkit-border-radius:100%;-moz-border-radius:100%;border-radius:100%;float:left;margin-right:10px}
+    .mini-stat-info{font-size:14px;padding-top:2px}
+    .mini-stat-info span{display:block;font-size:24px}
+    .bg-primary{background-color:#0f9cf3!important}
+    .bg-success{background-color:#6fd088!important}
+    .bg-info{background-color:#0097a7!important}
+    .bg-warning{background-color:#fb4!important}
+    .bg-danger{background-color:#f32f53!important}
+    .bg-muted{background-color:#707070!important}
+    .bg-white{background-color:#fff!important}
+    .bg-light{background-color:rgb(247, 245, 245)!important}
+    .bg-card{border:solid .5px #EEE; background-color:rgb(247, 245, 245)!important}
+
+    .text-white{color:#fff!important}
+    .text-danger{color:#f32f53!important}
+    .text-muted{color:#707070!important}
+    .text-primary{color:#0f9cf3!important}
+    .text-warning{color:#fb4!important}
+    .text-success{color:#6fd088!important}
+    .text-info{color:#0097a7!important}
+    .text-dark{color:#0a1832!important}
+
+    .m-t-20{margin-top:20px}
+
+    .header-title{margin-bottom:8px;text-transform:uppercase;letter-spacing:.02em;font-size:14px}

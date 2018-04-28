@@ -59,6 +59,7 @@ export class PerfilComponent implements OnInit {
             longitude: Number(p.controls.longitude.value),
             descricao: p.controls.descricao.value,
             file: uploadSnapshot.downloadURL,
+            role: 'business',
             idPerfil: t.key}));
         });
 

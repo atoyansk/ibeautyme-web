@@ -21,10 +21,10 @@ export class NavbarComponent implements OnInit {
         this.perfil = db.list(`perfil/${this.userId}`);        
     })
 
-    this.afAuth.authState.subscribe(user => {
-      if(user) this.userId = user.uid
-        this.roles = this.db.list(`roles/${this.userId}`);
-    })
+    // this.afAuth.authState.subscribe(user => {
+    //   if(user) this.userId = user.uid
+    //     this.roles = this.db.list(`roles/${this.userId}`);
+    // })
    }
 
   ngOnInit() {

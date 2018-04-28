@@ -2,7 +2,7 @@
   <div class="row">
       <div class="col-md-5">
         <div class="card">
-          <div class="card-header text-white bg-primary mb-3">
+          <div class="card-header text-white bg-info mb-3">
               <h5>Business List</h5>    
           </div>
             <div class="card-body">
@@ -15,7 +15,9 @@
                     </div>
                     <div class="col-md-6 col-6">
                         <button class="btn btn-danger float-right" title="Block it"><i class="fa fa-lock"></i></button>
-                        <button class="btn btn-info" title="More Info"><i class="fa fa-info-circle"></i></button>
+                        <button class="btn btn-info" title="More Info"
+                                [class.selected]="p === selectedP"
+                                (click)="onSelect(p)"><i class="fa fa-info-circle"></i></button>
                     </div>
                 </li>
               </ul>
@@ -29,6 +31,49 @@
               </div>
           </div> 
         </div>
+      </div>
+      <div class="col-md-7">
+        <div *ngIf="selectedP">
+            <h5>{{ selectedP.nome }}</h5>
+            <div class="idKey">{{selectedP.$key}}</div>
+            <div><span>Address: </span>{{selectedP.endereco}}</div>
+            <div class="linediv"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mini-stat clearfix bg-info">
+                        <span class="mini-stat-icon bg-light"><i class="fa fa-cart-plus text-info"></i></span>
+                        <div class="mini-stat-info text-right text-white">
+                            <span class="counter text-white">20544</span>
+                            Total Sales
+                        </div>
+                        <p class="mb-0 m-t-20 text-white">Total income: $22506 <span class="pull-right"><i class="fa fa-caret-up m-r-5"></i>10.25%</span></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mini-stat clearfix bg-success">
+                        <span class="mini-stat-icon bg-light"><i class="fa fa-dollar text-success"></i></span>
+                        <div class="mini-stat-info text-right text-white">
+                            <span class="counter text-white">956</span>
+                            New Orders
+                        </div>
+                        <p class="mb-0 m-t-20 text-white">Total income: $22506 <span class="pull-right"><i class="fa fa-caret-up m-r-5"></i>10.25%</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="linediv"></div>
+            <h4 class="mt-0 header-title">Revenue</h4>
+            <div style="height: 380px">
+                <canvas
+                    baseChart
+                    [chartType]="'bar'"
+                    [datasets]="chartData1"
+                    [labels]="labels1"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    [colors]="colors1"
+                    (chartClick)="onChartClick($event)">
+                </canvas>
+          </div>
       </div>
   </div>
 </div>

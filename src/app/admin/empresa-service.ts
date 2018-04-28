@@ -11,6 +11,8 @@ export class EmpresaService {
     return this.db.list('empresa/', {
               query: {
                 orderByKey: true,
+                // orderByChild: "role",
+                // equalTo: 'business',
                 startAt: startKey,
                 limitToFirst: offset+1
               }

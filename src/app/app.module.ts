@@ -22,7 +22,7 @@ import { LoginModule } from './login/login.module';
 import { AdminModule } from './admin/admin.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app.routing.module';
-import { EmpresaService } from './shared/empresa-service';
+import { EmpresaService } from './admin/empresa-service';
 
 
 @NgModule({
