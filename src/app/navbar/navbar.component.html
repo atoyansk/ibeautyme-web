@@ -1,6 +1,6 @@
 <header id="topnav">
   <div class="topbar-main">
-    <div class="navbar-brand" *ngFor="let p of perfil | async">
+    <div [dir]="textDir" class="navbar-brand" *ngFor="let p of perfil | async">
       <img class="logo" src= '{{ p.file }}'/>
     </div>
     <div class="navbar-name" *ngFor="let p of perfil | async">
@@ -17,30 +17,30 @@
         
           <ul class="navbar-nav" *ngFor="let p of perfil | async">
             <li class="nav-item" *ngIf="p.role == 'business'">
-              <a routerLink="/agenda" class="nav-link">Agenda</a>
+              <a [routerLink]="['/agenda']" class="nav-link" translate>Agenda</a>
             </li>
             <li class="nav-item" *ngIf="p.role == 'admin'">
-              <a routerLink="/admin" class="nav-link">Dashboard</a>
+              <a [routerLink]="['/admin']" class="nav-link" translate>Admin</a>
             </li>
             <li class="nav-item">
-              <a routerLink="/perfil" class="nav-link">Perfil</a>
+              <a [routerLink]="['/perfil']" class="nav-link" translate>Profile</a>
             </li>
             <li class="nav-item" *ngIf="p.role == 'business'">
-              <a routerLink="/servicos" class="nav-link">Serviços</a>
+              <a [routerLink]="['/servicos']" class="nav-link" translate>Services</a>
             </li>
             <li class="nav-item" *ngIf="p.role == 'business'">
-              <a routerLink="/profissionais" class="nav-link">Profissionais</a>
+              <a [routerLink]="['/profissionais']" class="nav-link" translate>Professionals</a>
             </li>
             <li class="nav-item" *ngIf="p.role == 'business'">
-              <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+              <a [routerLink]="['/dashboard']" class="nav-link" translate>Dashboard</a>
             </li>
           </ul>
           <div class="navbar-header" *ngFor="let p of perfil | async"> 
-            <button *ngIf="p.role == 'admin'" class="btn btn-stylish" routerLink="/signup">Novo Negócio</button>
+            <button *ngIf="p.role == 'admin'" class="btn btn-stylish" [routerLink]="['/signup']" translate>Newbusiness</button>
           </div>
         <ul class="navbar-nav ml-auto"> 
           <li class="nav-item">
-            <a href="#" (click)="form_logout()" class="nav-link">Sign Out</a>
+            <a href="#" (click)="form_logout()" class="nav-link" translate>Signout</a>
           </li>
         </ul>
       </div>

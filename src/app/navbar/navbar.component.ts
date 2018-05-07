@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-navbar',
@@ -14,21 +16,29 @@ export class NavbarComponent implements OnInit {
   perfil: FirebaseListObservable<any[]>;
   roles: FirebaseListObservable<any[]>;
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) {
+  public textDir;
+
+  lang = sessionStorage.getItem("lang");
+
+  constructor(public translate: TranslateService, private db: AngularFireDatabase, private afAuth: AngularFireAuth, private route: ActivatedRoute, private router: Router) {
 
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
         this.perfil = db.list(`perfil/${this.userId}`);        
     })
 
-    // this.afAuth.authState.subscribe(user => {
-    //   if(user) this.userId = user.uid
-    //     this.roles = this.db.list(`roles/${this.userId}`);
-    // })
+    if(this.lang === "he"){
+      this.textDir = 'rtl';
+    }
+    else {
+      this.textDir = 'ltr';
+    }
+    
    }
 
   ngOnInit() {
   }
+  
 
   form_logout(){
     this.afAuth.auth.signOut();

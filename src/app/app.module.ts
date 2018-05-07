@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
+
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 
@@ -23,7 +27,11 @@ import { AdminModule } from './admin/admin.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app.routing.module';
 import { EmpresaService } from './admin/empresa-service';
+import { RouterModule } from '@angular/router';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -42,10 +50,19 @@ import { EmpresaService } from './admin/empresa-service';
     AngularFireModule.initializeApp(FirebaseConfig),
     AngularFireDatabaseModule,
     AppRoutingModule,
+    RouterModule,
     LoginModule,
     AdminModule,
     DashboardModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [AngularFireDatabase, EmpresaService],
   bootstrap: [AppComponent]

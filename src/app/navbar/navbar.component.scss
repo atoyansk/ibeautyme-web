@@ -41,3 +41,7 @@
   float: right;
   color: white;
 }
+div [dir="rtl"] { 
+  position: relative;
+  right: -50%;
+}

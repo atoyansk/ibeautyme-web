@@ -72,7 +72,8 @@ export class ProfissionaisComponent implements OnInit {
             nome: f.controls.nome.value,
             sobre: f.controls.sobre.value,
             file: uploadSnapshot.downloadURL,
-            idPerfil: this.$key}));
+            idPerfil: this.$key,
+            idProf: t.key}));
 
           f.controls.file.setValue(null);
           f.controls.$key.setValue(null);

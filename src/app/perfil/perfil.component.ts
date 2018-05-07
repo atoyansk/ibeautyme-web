@@ -4,7 +4,8 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import * as firebase from 'firebase';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-perfil',
@@ -16,9 +17,12 @@ export class PerfilComponent implements OnInit {
   userId: string;
   perfil: FirebaseListObservable<any[]>;
   firebasestorage: any;
+  
 
-  constructor(private db: AngularFireDatabase, 
+  constructor(private translate: TranslateService, 
+    private db: AngularFireDatabase, 
     private afAuth: AngularFireAuth, 
+    private route: ActivatedRoute, 
     private router: Router) { 
 
       this.afAuth.authState.subscribe(user => {
@@ -30,6 +34,9 @@ export class PerfilComponent implements OnInit {
     
 
   ngOnInit() {
+    let lang = sessionStorage.getItem("lang");
+    this.translate.use(lang);
+    console.log(lang);
   }
 
   form_submit(p: NgForm) {

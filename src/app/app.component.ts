@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  
+  public textDir;
+
+  lang = sessionStorage.getItem("lang");
+
+  
+  constructor() { 
+
+    if(this.lang === "he"){
+      this.textDir = 'rtl';
+    }
+    else {
+      this.textDir = 'ltr';
+    }
+    console.log(this.textDir); 
+  }
+
 }

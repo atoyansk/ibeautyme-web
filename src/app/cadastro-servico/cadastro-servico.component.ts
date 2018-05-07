@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 import { Servico } from './servico';
 import { CadastroServicoModule } from './cadastro-servico.module';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ProfissionaisModule } from '../profissionais/profissionais.module';
 import { Profissional } from '../profissionais/profissional';
@@ -13,7 +14,7 @@ import { Profissional } from '../profissionais/profissional';
 @Component({
   selector: 'app-cadastro-servico',
   templateUrl: './cadastro-servico.component.html',
-  styleUrls: ['./cadastro-servico.component.css']
+  styleUrls: ['./cadastro-servico.component.scss']
 })
 export class CadastroServicoComponent implements OnInit {
 
@@ -25,7 +26,15 @@ export class CadastroServicoComponent implements OnInit {
   profissionais: FirebaseListObservable<Servico[]>;
   perfil: FirebaseListObservable<any[]>;
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) { 
+  public textDir;
+
+  lang = sessionStorage.getItem("lang");
+
+  constructor(private db: AngularFireDatabase, 
+              private afAuth: AngularFireAuth,
+              private translate: TranslateService,
+              private route: ActivatedRoute, 
+              private router: Router) { 
 
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
@@ -51,10 +60,19 @@ export class CadastroServicoComponent implements OnInit {
         })
     })
 
+    if(this.lang === "he"){
+      this.textDir = 'rtl';
+    }
+    else {
+      this.textDir = 'ltr';
+    }
+
   }
 
   ngOnInit() {
-    
+    let lang = sessionStorage.getItem("lang");
+    this.translate.use(lang);
+    console.log(lang);
   }
 
    editServ(evt, serv: Servico, f: NgForm){

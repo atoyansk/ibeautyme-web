@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Profissional } from '../profissionais/profissional';
 import * as firebase from 'firebase';
@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 })
 export class AgendaComponent implements OnInit {
 
-  initialLocaleCode = 'pt-br';
+  
 
   userId: string;
   $key: string;
@@ -23,13 +23,17 @@ export class AgendaComponent implements OnInit {
 
   selectedP: Profissional;
   
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) { 
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private route: ActivatedRoute, private router: Router) { 
   
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
       this.profissionais = this.db.list(`profissionais/${this.userId}`);
     })
+
+    
   }
+  lang: string = sessionStorage.getItem("lang");
+  initialLocaleCode = this.lang;
 
   ngOnInit() {
     

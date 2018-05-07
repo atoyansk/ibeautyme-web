@@ -23,6 +23,8 @@
     "@angular/router": "^5.1.0",
     "@firebase/storage": "^0.1.6",
     "@firebase/storage-types": "^0.1.1",
+    "@ngx-translate/core": "^9.1.1",
+    "@ngx-translate/http-loader": "^3.0.1",
     "@types/fullcalendar": "^3.8.0",
     "angularfire2": "^4.0.0-rc.1",
     "ap-angular2-fullcalendar": "^1.3.7",

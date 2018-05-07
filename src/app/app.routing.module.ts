@@ -11,6 +11,8 @@ import { AgendaComponent } from './agenda/agenda.component';
 import { SignUpFormComponent } from './login/sign-up-form/sign-up-form.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TranslateService } from '@ngx-translate/core';
+
 
 const AppRoutes: Routes = [
 
@@ -23,7 +25,7 @@ const AppRoutes: Routes = [
             {path: 'profissionais', component: ProfissionaisComponent},
             {path: 'admin', component: AdminComponent},
             {path: 'dashboard', component: DashboardComponent},
-            { path: 'signup', component: SignUpFormComponent }
+            {path: 'signup', component: SignUpFormComponent}
         ]}
     ]}
 ]
