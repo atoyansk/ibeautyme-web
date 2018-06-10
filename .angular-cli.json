@@ -27,7 +27,12 @@
         "../node_modules/chart.js/dist/Chart.min.js",
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/tether/dist/js/tether.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/moment/src/moment.js",
+        "../node_modules/fullcalendar/dist/fullcalendar.min.js",
+        "../node_modules/fullcalendar/dist/locale/en-gb.js",
+        "../node_modules/fullcalendar/dist/locale/pt-br.js",
+        "../node_modules/fullcalendar/dist/locale/he.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

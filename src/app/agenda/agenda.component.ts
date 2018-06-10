@@ -3,6 +3,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Profissional } from '../profissionais/profissional';
+import { TranslateService } from '@ngx-translate/core';
+import moment from 'moment/src/moment';
 import * as firebase from 'firebase';
 
 @Component({
@@ -22,30 +24,39 @@ export class AgendaComponent implements OnInit {
   perfil: FirebaseListObservable<any[]>;
 
   selectedP: Profissional;
+
   
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private route: ActivatedRoute, private router: Router) { 
+  
+  constructor(private translate: TranslateService, private db: AngularFireDatabase, private afAuth: AngularFireAuth, private route: ActivatedRoute, private router: Router) { 
   
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
       this.profissionais = this.db.list(`profissionais/${this.userId}`);
-    })
-
+    })  
     
   }
+
+  today = this.translate.get('hoje').subscribe(value => { this.today = value; } );
+  
   lang: string = sessionStorage.getItem("lang");
   initialLocaleCode = this.lang;
 
   ngOnInit() {
-    
+    console.log(this.today);
   } 
   
   calendarOptions:Object = {
+    locale: this.initialLocaleCode,
+    // buttonText:{
+    //   today:    'today',
+    //   week:     'week',
+    //   day:      'day'
+    // },
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'agendaWeek,agendaDay'
     },
-    locale: this.initialLocaleCode,
     fixedWeekCount: true,
     defaultView: 'agendaWeek',
     defaultDate: Date.now(),

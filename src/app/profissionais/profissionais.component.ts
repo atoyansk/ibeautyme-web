@@ -50,7 +50,10 @@ export class ProfissionaisComponent implements OnInit {
     console.log(prof);
     f.controls.nome.setValue(prof.nome);
     f.controls.sobre.setValue(prof.sobre);
+    f.controls.imagem.setValue(prof.file);
     f.controls.$key.setValue(prof.$key);
+    
+    console.log(f.controls.imagem.value);
    }
 
   form_submit(f: NgForm) {
@@ -68,7 +71,7 @@ export class ProfissionaisComponent implements OnInit {
             nome: f.controls.nome.value,
             sobre: f.controls.sobre.value,
             file: uploadSnapshot.downloadURL
-          }).then((t: any) => this.db.list('prof-emp/').push({
+          }).then((t: any) => this.db.object('prof-emp/' + t.key).update({
             nome: f.controls.nome.value,
             sobre: f.controls.sobre.value,
             file: uploadSnapshot.downloadURL,
@@ -94,22 +97,33 @@ export class ProfissionaisComponent implements OnInit {
               nome: f.controls.nome.value,
               sobre: f.controls.sobre.value,
               file: uploadSnapshot.downloadURL
-            })
-            f.controls.nome.setValue('');
-            f.controls.sobre.setValue('');
-            f.controls.file.setValue(null);
-            f.controls.$key.setValue(null);
+            }).then(() => this.db.object('prof-emp/' + f.controls.$key.value).update({
+              nome: f.controls.nome.value,
+              sobre: f.controls.sobre.value,
+              file: uploadSnapshot.downloadURL
+            }).then(()=> {
+              f.controls.nome.setValue('');
+              f.controls.sobre.setValue('');
+              f.controls.file.setValue(null);
+              f.controls.$key.setValue(null);
+            }));
           });  
         }else{
           //Aqui tem um erro... Não reconhece file == null
           this.db.object(`profissionais/${this.userId}/` + f.controls.$key.value).update({
             nome: f.controls.nome.value,
-            sobre: f.controls.sobre.value
-          })
-
-          f.controls.nome.setValue('');
-          f.controls.sobre.setValue('');
-          f.controls.$key.setValue(null);
+            sobre: f.controls.sobre.value,
+            file: f.controls.imagem.value
+          }).then(() => this.db.object('prof-emp/' + f.controls.$key.value).update({
+            nome: f.controls.nome.value,
+            sobre: f.controls.sobre.value,
+            file: f.controls.imagem.value
+          }).then(() => {
+            f.controls.nome.setValue('');
+            f.controls.sobre.setValue('');
+            f.controls.imagem.setValue('');
+            f.controls.$key.setValue(null);
+          }));    
         }
   
       }
@@ -117,6 +131,7 @@ export class ProfissionaisComponent implements OnInit {
 
   deleteProf(pKey) {
     this.db.object(`profissionais/${this.userId}/` + pKey).remove();
+    this.db.object('prof-emp/' + pKey).remove();
    }
 
 }

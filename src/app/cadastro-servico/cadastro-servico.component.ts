@@ -22,6 +22,7 @@ export class CadastroServicoComponent implements OnInit {
   $key: string;
   value: any;
   servicos: FirebaseListObservable<Servico[]>;
+  serv_emp: FirebaseListObservable<Servico[]>;
   servico: FirebaseObjectObservable<Servico>;
   profissionais: FirebaseListObservable<Servico[]>;
   perfil: FirebaseListObservable<any[]>;
@@ -39,6 +40,7 @@ export class CadastroServicoComponent implements OnInit {
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
         this.servicos = db.list(`servicos/${this.userId}`);
+        this.serv_emp = db.list('serv_emp/');
         //this.profissionais = db.list(`servicos/${this.userId}/profissionais/`);
     })
 
@@ -90,7 +92,7 @@ export class CadastroServicoComponent implements OnInit {
           nome: f.controls.nome.value,
           preco: f.controls.preco.value,
           tempo: f.controls.tempo.value
-        }).then((t: any) => this.db.list('serv-emp/').push({
+        }).then(({key}) => this.db.object('serv-emp/'+ key).update({
           nome: f.controls.nome.value,
           preco: f.controls.preco.value,
           tempo: f.controls.tempo.value,
@@ -102,17 +104,25 @@ export class CadastroServicoComponent implements OnInit {
             nome: f.controls.nome.value,
             preco: f.controls.preco.value,
             tempo: f.controls.tempo.value
-          });
-          
-          f.controls.nome.setValue('');
-          f.controls.preco.setValue('');
-          f.controls.tempo.setValue('');
-          f.controls.$key.setValue(null);
+          }).then(() => this.db.object(`serv-emp/` + f.controls.$key.value).update({
+            nome: f.controls.nome.value,
+            preco: f.controls.preco.value,
+            tempo: f.controls.tempo.value
+          }).then(() => {
+            f.controls.nome.setValue('');
+            f.controls.preco.setValue('');
+            f.controls.tempo.setValue('');
+            f.controls.$key.setValue(null);
+          }));
+
+          console.log(f.controls.$key.value);
+          console.log(this.$key);
         }
   }
 
   deleteServ(sKey) {
     this.db.object(`servicos/${this.userId}/` + sKey).remove();
+    this.db.object('serv-emp/' + sKey).remove();
    }
 
    resetForm(f: NgForm){
